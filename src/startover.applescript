@@ -14,7 +14,7 @@ set macAppStoreMini to "2BUA8C4S2C.com.agilebits.onepassword-osx-helper"
 set macAppStoreExists to false
 set agileBitsStoreExists to false
 
-display alert "Data Reset Utility for 1Password 5" message "This utility will move your 1Password vaults, backups, and preferences to a folder on your desktop. Please back up your 1Password data before you continue." buttons {"Cancel", "How to make a backup", "Continue"} default button 1
+display alert "Data Reset Utility for 1Password 5" message "Please back up your 1Password data before you continue! This utility will place a copy of your 1Password vaults and backups on your desktop and then delete the originals along with your 1Password preferences." buttons {"Cancel", "How to make a backup", "Continue"} default button 1
 set response to button returned of the result
 
 if response is "Cancel" then

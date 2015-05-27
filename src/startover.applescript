@@ -45,7 +45,7 @@ end try
 
 if agileBitsStoreExists then
 	fullyQuit(agileBitsStore, agileBitsStoreMini)
-end
+end if
 if macAppStoreExists then
 	fullyQuit(macAppStore, macAppStoreMini)
 end if

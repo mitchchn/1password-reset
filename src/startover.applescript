@@ -14,6 +14,15 @@ set macAppStoreMini to "2BUA8C4S2C.com.agilebits.onepassword-osx-helper"
 set macAppStoreExists to false
 set agileBitsStoreExists to false
 
+on fullyQuit(fullApp, mini)
+	if application id fullApp is running then tell application id fullApp to quit
+	if application id mini is running then tell application id mini to quit
+
+	repeat until (application id fullApp is not running and application id mini is not running)
+  	-- pause until 1Password has fully quit
+  end repeat
+end fullyQuit
+
 display alert "Data Reset Utility for 1Password 5" message "Please back up your 1Password data before you continue! This utility will place a copy of your 1Password vaults and backups on your desktop and then delete the originals along with your 1Password preferences." buttons {"Cancel", "How to make a backup", "Continue"} default button 1
 set response to button returned of the result
 
@@ -35,13 +44,10 @@ try
 end try
 
 if agileBitsStoreExists then
-	if application id agileBitsStore is running then tell application id agileBitsStore to quit
-	if application id agileBitsStoreMini is running then tell application id agileBitsStoreMini to quit
-end if
-
+	fullyQuit(agileBitsStore, agileBitsStoreMini)
+end
 if macAppStoreExists then
-	if application id macAppStore is running then tell application id macAppStore to quit
-	if application id macAppStoreMini is running then tell application id macAppStoreMini to quit
+	fullyQuit(macAppStore, macAppStoreMini)
 end if
 
 set sourcePath to "Library/Containers/2BUA8C4S2C.com.agilebits.onepassword-osx-helper"

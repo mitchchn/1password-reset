@@ -1,6 +1,6 @@
 (*
 
-	Data Reset Utility for 1Password 5 v0.5
+	Data Reset Utility for 1Password 5 v0.5.1
 	By Mitchell Cohen
 	2016-07-16
 
@@ -37,8 +37,8 @@ to fullyQuit out of onePassword given mini:onePasswordMini
 end fullyQuit
 
 to moveStuff from sourcePath into outPath
-	set timestamp to do shell script "date +%s"
-	set dest to outPath & "-" & timestamp
+	set timestamp to do shell script "date " & quoted form of "+%Y-%m-%d %H_%M_%S"
+	set dest to outPath & " " & timestamp
 	try
 		do shell script "mv ~/" & quoted form of sourcePath & " ~/" & quoted form of dest
 	end try
